@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-# Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,7 +31,15 @@ gem "paperclip", "~> 5.0.0.beta1"
 gem 'dropzonejs-rails'
 gem "figaro","~> 1.1.0"
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
+group :development, :test do
+  # Use mysql as the database for Active Record
+  gem 'mysql2', '>= 0.3.13', '< 0.5'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
