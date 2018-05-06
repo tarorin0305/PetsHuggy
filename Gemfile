@@ -32,7 +32,7 @@ gem 'dropzonejs-rails'
 gem "figaro","~> 1.1.0"
 
 group :production do
-  gem 'pg'
+  gem 'mysql2', '>= 0.3.13', '< 0.5'
   gem 'rails_12factor'
 end
 
