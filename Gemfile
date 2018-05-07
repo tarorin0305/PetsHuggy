@@ -30,6 +30,8 @@ gem 'omniauth-facebook'
 gem "paperclip", "~> 5.0.0.beta1"
 gem 'dropzonejs-rails'
 gem "figaro","~> 1.1.0"
+gem 'aws-sdk', '~> 2.3'
+
 
 group :production do
   gem 'mysql2', '>= 0.3.13', '< 0.5'
