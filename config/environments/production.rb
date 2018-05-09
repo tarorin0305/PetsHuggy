@@ -80,7 +80,7 @@ Rails.application.configure do
   # remember to change localhost to actual host
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  cconfig.paperclip_defaults = {
+  config.paperclip_defaults = {
     storage: :s3,
     s3_protocol: :https,
     bucket: ENV.fetch('S3_BUCKET_NAME'),
