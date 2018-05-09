@@ -3,19 +3,21 @@
 @import "toastr";
 @import "dropzone/dropzone";
 
+
+
 .jumbotron {
     padding-top: 0px;
     // 背景画像を暗くする
     background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05) ), url(person-845325_1920.jpg);
-	background-size: cover;
-	// 背景画像の位置を決める
-	background-position: 50% 50%;
-	height: 420px;
+  background-size: cover;
+  // 背景画像の位置を決める
+  background-position: 50% 50%;
+  height: 420px;
 }
 
 .jumbotron .container .row{
-  margin-top: 100px;
-  color: #fff;
+    margin-top: 100px;
+    color: #fff;
 }
 
 .navbar-default {
@@ -37,78 +39,104 @@
     background-color: #fff;
 }
 
-//navbar-deviseのCSS
-.navbar-devise{
-  background: #fff;
-  border-color: #fff;
-  z-index: 10;
+//navbar-deviseのcss
+.navbar-devise {
+    background: #fff;
+    border-color: #fff;
+    z-index: 10;
 }
 
 .navbar-devise .navbar-nav > li > a {
-  color: #222222;
-  font-size: 13px;
+    color: #222222;
+    font-size: 13px;
 }
 
-.navbar-devise .navbar-brand{
-  color: #222222;
+.navbar-devise .navbar-brand {
+    color: #222222;
 }
 
 // トップページのnavbarのドロップダウンがクリックされた時
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus{
-  background-color: transparent;
-  color: #555;
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: transparent;
+    color: #555;
 }
 
-//facebookボタンのCSS
-.btn-facebook{
-  color: #fff;
-  background-color: #4c66a4;
+//facebookボタン
+.btn-facebook {
+    color: #fff;
+    background-color: #4c66a4;
 }
 
-// プロフィール画像
-.profile-0{
-  width: 28px;
-  height: 28px;
+// row-space類
+.row-space-top-0 {
+  margin-top: 0px;
 }
 
-.profile-1{
-  width: 50px;
-  height: 50px;
+.row-space-top-1 {
+  margin-top: 10px;
 }
 
-.profile-2{
-  width: 100px;
-  height: 100px;
+.row-space-top-2 {
+  margin-top: 15px;
 }
 
-.profile-full{
-  width: 30%;
+.row-space-top-3 {
+  margin-top: 20px;
 }
 
-@media(min-width: 992px){
-  .profile-full{
-    width: 100%;
-  }
+.row-space-top-4 {
+  margin-top: 25px;
 }
 
-.row-space-1{
+.row-space-0 {
+  margin-bottom: 0px;
+}
+.row-space-1 {
   margin-bottom: 10px;
 }
 
-.row-space-2{
+.row-space-2 {
   margin-bottom: 15px;
 }
 
-.row-space-3{
+.row-space-3 {
   margin-bottom: 20px;
 }
 
-.row-space-4{
-  margin-bottom: 25px;
+.row-space-4 {
+    margin-bottom: 25px;
 }
 
-.btn-full{
-  width:100%;
+// プロフィール画像
+.profile-0 {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+.profile-1 {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.profile-2 {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.profile-full {
+  width: 30% !important;
+  height: 80px !important;
+}
+
+@media (min-width: 992px){
+.profile-full {
+        width: 100% !important;
+        height: 180px !important;
+    }
+}
+
+.btn-full {
+    width: 100%;
 }
 
 .vertification-checked:before{
@@ -116,63 +144,65 @@
   font-family: FontAwesome;
   position: relative;
   z-index: 100;
-  top: 2px;
+  top:2px;
   font-size: 1.55em;
   text-align: center;
   width: 1.25em;
   color: #00d1c1;
 }
 
-@media(min-width: 768px){
-  .sidebar-nav .navbar .navbar-collapse{
+
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
   }
-  .sidebar-nav .navbar ul{
+  .sidebar-nav .navbar ul {
     float: none;
   }
-  .sidebar-nav .navbar ul:not{
+  .sidebar-nav .navbar ul:not {
     display: block;
   }
-  .sidebar-nav .navbar li{
+  .sidebar-nav .navbar li {
     float: none;
     display: block;
   }
-  .sidebar-nav .navbar li a{
+  .sidebar-nav .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
   }
 }
 
 .sidebar-nav .navbar-default .navbar-nav > li > a {
-  color: #222;
-  font-size:16px;
+    color: #222;
+    font-size: 16px;
 }
 
 .sidebar-nav .navbar-default .navbar-nav > li{
-  border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  border-color: #fff;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff
 }
 
-.sidebar-nav .navbar-default .navbar-nav >li:first-child{
-  border-top:1px solid #ddd;
+.sidebar-nav .navbar-default .navbar-nav > li:first-child {
+    border-top: 1px solid #ddd;
 }
 
-.sidebar-nav .navbar-toggle{
-  background-color: #337ab7;
+.sidebar-nav .navbar-toggle {
+    background-color: #337ab7;
 }
 
-@media(max-width: 768px){
-  .dz-preview, .dz-processing, .dz-image-preview, .dz-error, .dz-complete{
-    margin: 10px 0!important;
+// dropzone.jsのcss
+@media (max-width: 768px){
+  .dz-preview, .dz-processing, .dz-image-preview, .dz-error, .dz-complete {
+      margin: 10px 0!important;
+      width: 100%;
+  }
+  .dropzone .dz-preview .dz-image {
     width: 100%;
   }
-  .dropzone .dz-preview .dz-image{
-    width: 100%;
-  }
-  .dropzone .dz-preview .dz-image img{
+  .dropzone .dz-preview .dz-image img {
     height: 120px;
   }
 }
@@ -182,11 +212,105 @@
   height: 100%;
 }
 
-.dropzone.dz-started .dz-message{
+.dropzone.dz-started .dz-message {
   display: block;
 }
 
-body{
+
+// listings/indexのcss
+a.sidebar-item {
+  font-size: 16px;
   color: #222;
-  background-color: #F8F8F8;
+}
+
+.sidebar-list li.active {
+  font-weight: bold;
+}
+
+.ul-unstyled{
+  list-style: none; padding-left: 0;
+}
+
+li.panel-body {
+    border-top: 1px solid #eeeeee;
+}
+
+li.panel-body:first-child {
+  border-top: none;
+}
+
+span.listing-title {
+  font-size: 18px;
+}
+
+.row-table{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.col-middle{
+  vertical-align: middle;
+  display: table-cell;
+  float: none;
+}
+
+.panel-list-img {
+  height: 61px;
+}
+
+.panel-list-img img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 767px){
+  .row-table, .col-middle{
+    display: block;
+  }
+
+  .panel-list-img {
+    height: 170px;
+  }
+}
+
+// showページのcss
+.container-listing-show {
+  background-color: #fff;
+  border-bottom: 1px solid #dce0e0;
+}
+
+.panel-show {
+  border-radius: 0px;
+  border: none;
+}
+
+.panel-show .panel-heading{
+  background-color: rgba(60,63,64,0.9);
+  color: #fff;
+  border-radius: 0px;
+  border-bottom: 0px;
+}
+
+.panel-show .panel-body{
+  border: 1px solid #eee;
+}
+
+.btn-wide{
+  width: 85%;
+}
+
+//showページのデスクトップcss
+@media (min-width: 992px){
+  .panel-show {
+    position: inherit;
+    width: 296px;
+    z-index: 100;
+    margin-top: -62px;
+  }
+}
+
+body {
+    color: #222;
+    background-color: #F8F8F8;
 }
