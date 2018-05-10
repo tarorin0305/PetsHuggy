@@ -3,6 +3,8 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       render json: {message: "success", photoId: @photo.id}, status: 200
+      # ↑ここのメッセージが画像アップ時にはデベロッパーツールでは表示されるので、@photoには中身を格納できている
+      # @photo.saveしたあとどうなるのか？
     else
       render json: {error: @photo.errors.full_messages.join(", ")}, status: 400
     end
