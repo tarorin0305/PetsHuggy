@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
 
   def show
     @photos = @listing.photos
+    #1つのListingデータ(Listingモデルのインスタンス)には、複数のphotoが紐付いており、つまりは複数のphotosテーブルレコードが紐付いているということ。
   end
 
   def new
@@ -64,13 +65,15 @@ class ListingsController < ApplicationController
 
 
   private
-  def listing_params
-    params.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight)
+  def listing_params #更新を許可するカラムをここで書いている。
+    params.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight, :address)
   end
 
   def set_listing
     @listing = Listing.find(params[:id])
-    #ここがあやしい
+    #ここがあやしい。でも問題なさそう。paramsの引き渡しは出来ている（3 をparamsに与えるとちゃんと出る）
+    #おそらくは、Listing.find(params[:id])で、URLパラメータと同じ数字をidにもつレコードをlistingsテーブルから引っ張ってきて、@listing変数に代入している。
+    #たぶん、左辺には配列形式のデータが格納されている。
   end
 
 
