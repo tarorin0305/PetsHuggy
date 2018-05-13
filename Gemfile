@@ -32,6 +32,7 @@ gem 'dropzonejs-rails'
 gem "figaro","~> 1.1.0"
 gem 'aws-sdk', '~> 3'
 gem 'geocoder'
+gem 'jquery-ui-rails'
 
 
 group :production do

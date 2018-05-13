@@ -66,7 +66,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params #更新を許可するカラムをここで書いている。
-    params.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight, :address)
+    params.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight, :address, :listing_title, :listing_content, :active)
   end
 
   def set_listing

@@ -74,6 +74,7 @@
                     </div>
                 </div>
 
+                <!-- 予約フォーム -->
                 <div class="col-md-3">
                     <div class="panel panel-default panel-show">
                         <div class="panel-heading">
@@ -81,7 +82,26 @@
                         </div>
 
                         <div class="panel-body panel-real">
-                            <%= form_for @listing, :html => { multipart: true } do |f| %>
+                            <%= form_for [@listing, @listing.reservations.new] do |f| %>
+                            <!-- /listings/:listing_id/reservations というパスにPOSTリクエストを飛ばしているが、@listingの部分で、:listing_idを表現している。パスが入れ子状態になっているのは、ルーティング参照(パート9−3) -->
+
+                              <!-- これは、予約をする時に、一緒におくる、データです。controllerで定義したreservation_paramsをここで記入している。ここで指定した各パラメータを受け取りながら、reservation#actionは起動される。 -->
+                                <%= f.hidden_field :listing_id, value: @listing.id %>
+                                <%= f.hidden_field :price_pernight, value: @listing.price_pernight %>
+                                <%= f.hidden_field :total_price, id:'reservation_total_price' %>
+
+                                <div class="row row-space-2">
+                                  <div class="col-md-6">
+                                    <label>Check In</label>
+                                      <%= f.text_field :start_date, :class => 'form-control', placeholder: '開始' %>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <label>Check Out</label>
+                                    <%= f.text_field :end_date, :class => 'form-control', placeholder: '終了' %>
+                                  </div>
+                                </div>
+
                                 <div class="actions text-center">
                                     <%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>
                                 </div>
@@ -112,13 +132,98 @@
     <!-- レビュー    -->
     <div class="row">
         <div class="col-md-8">
-            <h3 class="row-space-3">このリスティングについて</h3>
-            <p><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %></p>
+            <h3 class="row-space-3">レビュー</h3>
+
         </div>
 
         <div class="col-md-4">
 
         </div>
     </div>
+    <!-- google map    -->
+    <div class="row">
+        <div class="col-md-8">
+          <h3 class="row-space-3">アクセス</h3>
+          <div id="map"></div>
+        </div>
 
+        <div class="col-md-4">
+
+        </div>
+    </div>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        width: 100%;
+        height: 350px;
+      }
+    </style>
+    <!-- 近くのリスティング    -->
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="row-space-3">近くのリスティング</h3>
+            <% for listing in @listing.nearbys(10) %>
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading panel-listing text-center" style="padding:0;">
+                  <%= link_to(listing) do %>
+                    <%= image_tag listing.photos[0].image.url(:medium) if listing.photos.length > 0 %>
+                  <% end %>
+                </div>
+
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-8 col-xs-8">
+                      <%= link_to listing.listing_title, listing %><br>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                      <%= image_tag listing.user.image, class:"img-circle profile-1" %>
+                    </div>
+                    <div class="price-card">
+                      <%= listing.price_pernight %> 円
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+    </div>
 </div>
+
+<script>
+
+
+      function initMap() {
+        // Create the map.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: {lat: <%= @listing.latitude %>, lng: <%= @listing.longitude %>},
+          mapTypeId: 'terrain'
+        });
+
+        // Construct the circle for each value in citymap.
+        // Note: We scale the area of the circle based on the population.
+        // Add the circle for this city to the map.
+        var cityCircle = new google.maps.Circle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35,
+          map: map,
+          center: {lat: <%= @listing.latitude %>, lng: <%= @listing.longitude %>},
+          radius: 500
+        });
+
+      }
+    </script>
+
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCx-aWhmvhKN_660smvvvDBw_1DvHGXK4&callback=initMap">
+    </script>
