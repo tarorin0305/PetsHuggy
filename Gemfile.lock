@@ -690,7 +690,6 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    pg (1.0.0)
     rack (1.6.10)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -797,7 +796,6 @@ DEPENDENCIES
   mysql2 (>= 0.3.13, < 0.5)
   omniauth-facebook
   paperclip (~> 5.0.0.beta1)
-  pg
   rails (= 4.2.6)
   rails_12factor
   sass-rails (~> 5.0)
